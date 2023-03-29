@@ -6,7 +6,7 @@ import random
 dir_from = "C:/practice/"
 dir_to = "C:/saveimages/"
 
-def Crop_image(filename, new_file_direc, block_size):
+def crop_image(filename: flt, new_file_direc: flt, block_size: int):
     #the first parameter of the function is directory of the file + filename (string)
     #the second parameter of the function is final directory (string)
     #the third parameter is what is the size of blocks in pixel to you want to divide the image (int)
