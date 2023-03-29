@@ -3,14 +3,14 @@ import os
 import re
 import random
 
-dir_from = "C:/practice/"
-dir_to = "C:/saveimages/"
+directory_from = "C:/practice/"
+directory_to = "C:/saveimages/"
 
 filename1 = "C:/practice/file1.jpg"
 
 print(re.match(r"(.+?)\..+", os.path.basename(filename1)).group(1))
 
-def сrop_image(filename: str, new_file_direc: str, cropp_size: int):
+def сrop_image(filename: str, new_file_directory: str, cropp_size: int):
     """
     the first parameter of the function is filename (string)
     the second parameter of the function is final directory (string)
@@ -25,9 +25,9 @@ def сrop_image(filename: str, new_file_direc: str, cropp_size: int):
 
     cropped_filename = re.match(r"(.+?)\..+", os.path.basename(filename)).group(1)
 
-    path = "{}/{}.jpg".format(dir_to, cropped_filename)
+    path = "{}/{}.jpg".format(directory_to, cropped_filename)
     rand_num = random.randrange(1, 100000000000000)
-    extra_path = "{}/{}_{}.jpg".format(new_file_direc, cropped_filename, str(rand_num))
+    extra_path = "{}/{}_{}.jpg".format(new_file_directory, cropped_filename, str(rand_num))
 
     check_file = os.path.isfile(path)
 
@@ -43,12 +43,12 @@ def сrop_image(filename: str, new_file_direc: str, cropp_size: int):
 file_list = []
 
 # Iterate directory
-for path in os.listdir(dir_from):
+for path in os.listdir(directory_from):
     # check if current path is a file
-    if os.path.isfile(os.path.join(dir_from, path)):
+    if os.path.isfile(os.path.join(directory_from, path)):
         file_list.append(path)
 
 for file in file_list:
     #number of file in queue
     image_name = file
-    crop_image(os.path.join(dir_from, image_name), dir_to, 10)
+    crop_image(os.path.join(directory_from, image_name), directory_to, 10)
