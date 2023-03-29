@@ -11,10 +11,11 @@ filename1 = "C:/practice/file1.jpg"
 print(re.match(r"(.+?)\..+", os.path.basename(filename1)).group(1))
 
 def сrop_image(filename: str, new_file_direc: str, cropp_size: int):
-
-    #the first parameter of the function is filename (string)
-    #the second parameter of the function is final directory (string)
-    #the third parameter is how much do you want to crop (int)
+    """
+    the first parameter of the function is filename (string)
+    the second parameter of the function is final directory (string)
+    the third parameter is how much do you want to crop (int)
+    """
     im = Image.open(filename)
 
     cropp = cropp_size
