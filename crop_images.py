@@ -87,4 +87,4 @@ print(file_list)
 for file in file_list:
     #number of file in queue
     image_name = file
-    Crop_image(os.path.join(dir_from, image_name), dir_to, 100)
+    crop_image(os.path.join(dir_from, image_name), dir_to, 100)
