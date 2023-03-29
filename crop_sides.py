@@ -16,11 +16,11 @@ def сrop_image(filename: str, new_file_direc: str, cropp_size: int):
     the second parameter of the function is final directory (string)
     the third parameter is how much do you want to crop (int)
     """
-    im = Image.open(filename)
+    image = Image.open(filename)
 
     cropp = cropp_size
-    width, height = im.size
-    cropped_im = im.crop((cropp, cropp, width-cropp, height-cropp))
+    width, height = image.size
+    cropped_image = image.crop((cropp, cropp, width-cropp, height-cropp))
 
 
     cropped_filename = re.match(r"(.+?)\..+", os.path.basename(filename)).group(1)
@@ -32,10 +32,10 @@ def сrop_image(filename: str, new_file_direc: str, cropp_size: int):
     check_file = os.path.isfile(path)
 
     if check_file is False:
-        cropped_im.save(path)
+        cropped_image.save(path)
         print("the file is saved at "+path)    
     else:
-        cropped_im.save(extra_path)
+        cropped_image.save(extra_path)
         extra_path_variable =+ 1
         print("the file is saved at "+extra_path)
 
