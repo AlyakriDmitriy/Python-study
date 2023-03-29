@@ -13,13 +13,13 @@ def crop_image(filename: flt, new_file_direc: flt, block_size: int):
     the second parameter of the function is final directory (string)
     the third parameter is what is the size of blocks in pixel to you want to divide the image (int)
     """
-    im = Image.open(filename)
+    image = Image.open(filename)
     
     block = block_size
-    width, height = im.size
+    width, height = image.size
 
     #number of blocks we need, we divide width by 10, divide height by 10, multiply first result and second
-    #we need +1 because the might some part be left
+    #we need +1 because some parts might be left not counted
     w_blocks = (width//block)+1
     h_blocks = (height//block)+1
     num_blocks = w_blocks*h_blocks
@@ -60,8 +60,8 @@ def crop_image(filename: flt, new_file_direc: flt, block_size: int):
                 file_path = "{}/{}_{}.jpg".format(new_file_direc, cropped_filename, str(file_path_variable))
 
 
-            cropped_im = im.crop((left_parameter, top_parameter, right_parameter, bottom_parameter))
-            cropped_im.save(file_path)
+            cropped_image = image.crop((left_parameter, top_parameter, right_parameter, bottom_parameter))
+            cropped_image.save(file_path)
             
             i_hor += 1
             left_parameter += block
