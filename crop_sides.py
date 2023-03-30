@@ -6,9 +6,6 @@ import random
 directory_from = "C:/practice/"
 directory_to = "C:/saveimages/"
 
-filename1 = "C:/practice/file1.jpg"
-
-print(re.match(r"(.+?)\..+", os.path.basename(filename1)).group(1))
 
 def сrop_image(filename: str, new_file_directory: str, cropp_size: int):
     """
@@ -26,8 +23,8 @@ def сrop_image(filename: str, new_file_directory: str, cropp_size: int):
     cropped_filename = re.match(r"(.+?)\..+", os.path.basename(filename)).group(1)
 
     path = "{}/{}.jpg".format(directory_to, cropped_filename)
-    rand_num = random.randrange(1, 100000000000000)
-    extra_path = "{}/{}_{}.jpg".format(new_file_directory, cropped_filename, str(rand_num))
+    random_number = random.randrange(1, 100000000000000)
+    extra_path = "{}/{}_{}.jpg".format(new_file_directory, cropped_filename, str(random_number))
 
     check_file = os.path.isfile(path)
 
