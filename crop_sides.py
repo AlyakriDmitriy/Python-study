@@ -47,4 +47,4 @@ for path in os.listdir(directory_from):
 for file in file_list:
     #number of file in queue
     image_name = file
-    сrop_image(os.path.join(directory_from, image_name), directory_to, 10)
+    сrop_image(os.path.join(directory_from, image_name), directory_to)
