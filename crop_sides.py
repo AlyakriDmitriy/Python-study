@@ -9,9 +9,9 @@ directory_to = "C:/saveimages/"
 
 def сrop_image(filename: str, new_file_directory: str, cropp_size: int):
     """
-    the first parameter of the function is filename (string)
-    the second parameter of the function is final directory (string)
-    the third parameter is how much do you want to crop (int)
+    filename parameter of the function is filename (string)
+    new_file_directory parameter of the function is final directory (string)
+    crop_size parameter is how much do you want to crop in pixels(int)
     """
     image = Image.open(filename)
 
@@ -48,4 +48,4 @@ for path in os.listdir(directory_from):
 for file in file_list:
     #number of file in queue
     image_name = file
-    crop_image(os.path.join(directory_from, image_name), directory_to, 10)
+    сrop_image(os.path.join(directory_from, image_name), directory_to, 10)

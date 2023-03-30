@@ -6,12 +6,12 @@ import random
 directory_from = "C:/practice/"
 directory_to = "C:/saveimages/"
 
-def crop_image(filename: flt, new_file_directory: flt, block_size: int):
+def crop_image(filename: str, new_file_directory: str, block_size: int):
     
     """
-    the first parameter of the function is directory of the file + filename (string)
-    the second parameter of the function is final directory (string)
-    the third parameter is what is the size of blocks in pixel to you want to divide the image (int)
+    filename parameter of the function is directory of the file + filename (string)
+    new_file_directory parameter of the function is final directory (string)
+    block_size parameter is what is the size of blocks in pixel to you want to divide the image (int)
     """
     image = Image.open(filename)
     
@@ -26,9 +26,9 @@ def crop_image(filename: flt, new_file_directory: flt, block_size: int):
     cropped_filename = re.match(r"(.+?)\..+", os.path.basename(filename)).group(1)
     #output "file1"
     #this checks if the directory to save is exist, if it doesn't, it creates one.
-    check_file = os.path.exists(new_file_direc)
+    check_file = os.path.exists(new_file_directory)
     if check_file is False:
-        os.makedirs(new_file_direc)
+        os.makedirs(new_file_directory)
 
     #file_path_variable = random.randrange(1, 100000000000000)
     #file_path = "{}/{}_{}.jpg".format(new_file_direc, cropped_filename, str(file_path_variable))
@@ -79,7 +79,7 @@ def crop_image(filename: flt, new_file_directory: flt, block_size: int):
 file_list = []
 
 # Iterate directory
-for path in os.listdir(dir_from):
+for path in os.listdir(directory_from):
     # check if current path is a file
     if os.path.isfile(os.path.join(directory_from, path)):
         file_list.append(path)
