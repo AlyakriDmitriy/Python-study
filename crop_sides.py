@@ -11,7 +11,6 @@ def сrop_image(filename: str, new_file_directory: str):
     """
     filename parameter of the function is filename (string)
     new_file_directory parameter of the function is final directory (string)
-    crop_size parameter is how much do you want to crop in pixels(int)
     """
     image = Image.open(filename)
 
