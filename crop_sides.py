@@ -7,7 +7,7 @@ directory_from = "C:/practice/"
 directory_to = "C:/saveimages/"
 
 
-def сrop_image(filename: str, new_file_directory: str, cropp_size: int):
+def сrop_image(filename: str, new_file_directory: str):
     """
     filename parameter of the function is filename (string)
     new_file_directory parameter of the function is final directory (string)
@@ -15,7 +15,7 @@ def сrop_image(filename: str, new_file_directory: str, cropp_size: int):
     """
     image = Image.open(filename)
 
-    cropp = cropp_size
+    cropp = 10
     width, height = image.size
     cropped_image = image.crop((cropp, cropp, width-cropp, height-cropp))
 
