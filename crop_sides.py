@@ -1,19 +1,28 @@
+
 from PIL import Image
 import os
 import re
 import random
+import tkinter as tk
+from tkinter import filedialog
 
-directory_from = "C:/practice/"
-directory_to = "C:/saveimages/"
+
+file_list = []
+directory_from = ''
+directory_to = ''
+percent = 0
 
 
-def сrop_image(filename: str, new_file_directory: str, crop_size: int):
+
+def crop_image(filename: str, new_file_directory: str, crop_size: int):
     """
     filename parameter of the function is filename (string)
     new_file_directory parameter of the function is final directory (string)
     crop_size parameter of the function is how much persent do you want to crop (int)
     """
+    
     image = Image.open(filename)
+
 
     #we can't cut more the 50% from each side, if I set a limit of 50 %.
 
@@ -24,12 +33,6 @@ def сrop_image(filename: str, new_file_directory: str, crop_size: int):
     #count how much we need to cut
     cropp_w = int(width*(crop_size*0.01))
     cropp_h = int(height*(crop_size*0.01))
-    
-
-
-    
-    
-
 
     cropped_image = image.crop((cropp_w, cropp_h, width-cropp_w, height-cropp_h))
 
@@ -50,57 +53,97 @@ def сrop_image(filename: str, new_file_directory: str, crop_size: int):
         extra_path_variable =+ 1
         print("the file is saved at "+extra_path)
 
-# list to store files
-file_list = []
+def startcropping():
+    for path in os.listdir(directory_from):
+        # check if current path is a file
+        if os.path.isfile(os.path.join(directory_from, path)):
+            file_list.append(path)
 
-# Iterate directory
-for path in os.listdir(directory_from):
-    # check if current path is a file
-    if os.path.isfile(os.path.join(directory_from, path)):
-        file_list.append(path)
-
-
-#directories = ['dir1', 'dir2']
-#file_list = get_files_from_directories(directories)
-
+    for file in file_list:
+        #number of file in queue
+        image_name = file
+        crop_image(os.path.join(directory_from, image_name), directory_to, int(percent))        
+    file = []
 
 
-#def get_files_from_directories(directories):
-#    file_list = []
-#
-#    # Iterate over all directories
-#    for directory_from in directories:
-#        # Iterate over all files in the directory
-#        for path in os.listdir(directory_from):
-#            # Check if current path is a file
-#            if os.path.isfile(os.path.join(directory_from, path)):
-#                file_list.append(os.path.join(directory_from, path))
-#
-#    return file_list
+def entry_directory_from():
+    global directory_from
+    directory_from = entry1.get()
+    print(directory_from)
+    
+
+def select_directory_from():
+    global directory_from
+    directory_from = filedialog.askdirectory()
+    print(directory_from)
+
+def entry_directory_to():
+    global directory_to
+    directory_to = entry2.get()
+    print(directory_to)
+
+def select_directory_to():
+    global directory_to
+    directory_to = filedialog.askdirectory()
+    print(directory_to)
+
+def entry_percent ():
+    global percent
+    percent = entry3.get()
+    print(percent)
+
+def creckprint():
+    print(directory_from)
+    print(directory_to)
+    print(percent)
 
 
+root = tk.Tk()
+root.title("File List")
+
+label1 = tk.Label(root, text="Enter directory path:")
+label1.pack()
+
+entry1 = tk.Entry(root)
+entry1.pack()
+
+button1 = tk.Button(root, text="Accept directory", command=entry_directory_from)
+button1.pack()
+
+button2 = tk.Button(root, text="Select directory", command=select_directory_from)
+button2.pack()
 
 
-#def add_to_directories(event=None):
-#    if event and event.widget == add_button:
-#        directories.append(my_entry.get())
-#    elif not event or event.keysym == 'Return':
-#        directories.append(my_entry.get())
-#    my_entry.delete(0, END)
-#    print(directories)
+label2 = tk.Label(root, text="Enter folder path to save:")
+label2.pack()
 
-#my_entry = Entry(root)
-#my_entry.pack()
+entry2 = tk.Entry(root)
+entry2.pack()
 
-#add_button = Button(root, text='Add a path', command=add_to_directories)
-#add_button.pack()
+button3 = tk.Button(root, text="Accept directory to save", command=entry_directory_to)
+button3.pack()
 
-#my_entry.bind("<Return>", add_to_directories)
-
-#root.mainloop()
+button4 = tk.Button(root, text="Select directory to save", command=select_directory_to)
+button4.pack()
 
 
-for file in file_list:
-    #number of file in queue
-    image_name = file
-    сrop_image(os.path.join(directory_from, image_name), directory_to)
+label3 = tk.Label(root, text="How much to crop?:")
+label3.pack()
+
+entry3 = tk.Entry(root)
+entry3.pack()
+
+button7 = tk.Button(root, text="OK", command=entry_percent)
+button7.pack()
+
+
+button6 = tk.Button(root, text="Check", command=creckprint)
+button6.pack()
+
+button5 = tk.Button(root, text="Crop the images", command=startcropping)
+button5.pack()
+
+
+root.mainloop()
+
+
