@@ -99,50 +99,44 @@ def creckprint():
 
 
 root = tk.Tk()
-root.title("File List")
+root.title("Crop images")
+root.geometry("400x160")
 
 label1 = tk.Label(root, text="Enter directory path:")
-label1.pack()
+label1.grid(row=0, column=0)
 
 entry1 = tk.Entry(root)
-entry1.pack()
+entry1.grid(row=0, column=1)
 
 button1 = tk.Button(root, text="Accept directory", command=entry_directory_from)
-button1.pack()
+button1.grid(row=0, column=2, sticky="we")
 
 button2 = tk.Button(root, text="Select directory", command=select_directory_from)
-button2.pack()
-
+button2.grid(row=1, column=2, sticky="we")
 
 label2 = tk.Label(root, text="Enter folder path to save:")
-label2.pack()
+label2.grid(row=2, column=0)
 
 entry2 = tk.Entry(root)
-entry2.pack()
+entry2.grid(row=2, column=1)
 
 button3 = tk.Button(root, text="Accept directory to save", command=entry_directory_to)
-button3.pack()
+button3.grid(row=2, column=2, sticky="we")
 
 button4 = tk.Button(root, text="Select directory to save", command=select_directory_to)
-button4.pack()
-
+button4.grid(row=3, column=2, sticky="we")
 
 label3 = tk.Label(root, text="How much to crop?:")
-label3.pack()
+label3.grid(row=4, column=0)
 
 entry3 = tk.Entry(root)
-entry3.pack()
+entry3.grid(row=4, column=1)
 
 button7 = tk.Button(root, text="OK", command=entry_percent)
-button7.pack()
-
-
-button6 = tk.Button(root, text="Check", command=creckprint)
-button6.pack()
+button7.grid(row=4, column=2, sticky="we")
 
 button5 = tk.Button(root, text="Crop the images", command=startcropping)
-button5.pack()
-
+button5.grid(row=5, column=2, sticky="we")
 
 root.mainloop()
 
