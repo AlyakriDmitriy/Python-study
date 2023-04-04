@@ -1,11 +1,9 @@
-
 from PIL import Image
 import os
 import re
 import random
 import tkinter as tk
 from tkinter import filedialog
-
 
 file_list = []
 directory_from = ''
