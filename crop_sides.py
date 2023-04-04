@@ -9,6 +9,7 @@ from tkinter import filedialog
 directory_from = ''
 directory_to = ''
 percent = 0
+file_list = []
 
 
 
@@ -53,7 +54,6 @@ def crop_image(filename: str, new_file_directory: str, crop_size: int):
 
 def startcropping():
     global file_list
-
     for path in os.listdir(directory_from):
         # check if current path is a file
         if os.path.isfile(os.path.join(directory_from, path)):
