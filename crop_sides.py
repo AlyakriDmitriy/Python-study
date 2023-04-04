@@ -61,7 +61,7 @@ def startcropping():
         #number of file in queue
         image_name = file
         crop_image(os.path.join(directory_from, image_name), directory_to, int(percent))        
-    file = []
+    file_list = []
 
 
 def entry_directory_from():
